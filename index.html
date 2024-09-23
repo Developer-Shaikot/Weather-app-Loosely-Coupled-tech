@@ -13,35 +13,32 @@
             <button id="fetchWeather">Get Weather</button>
         </header>
 
-        <div class="content">
+        <div class="spinner-container" id="spinner" style="display: none">
+            <div class="spinner"></div>
+        </div>
+
+        <div class="content" id="content" style="display: none">
             <section class="weather-outlook">
-                <div id="weatherDetails">
-                    <!-- Weather forecast for today + next few days -->
-                </div>
+                <div id="weatherDetails"></div>
             </section>
 
             <section class="information-panel">
                 <h2>Information</h2>
-                <div id="infoPanel">
-                    <!-- Country, region, coordinates, time info -->
-                </div>
+                <div id="infoPanel"></div>
             </section>
 
             <section class="tm-weather">
                 <section class="today-tomorrow">
                     <div class="today-weather">
-                        <div id="todayWeather">
-                            <!-- Today's detailed weather -->
-                        </div>
+                        <div id="todayWeather"></div>
                     </div>
                     <div class="tomorrow-weather">
-                        <div id="tomorrowWeather">
-                            <!-- Tomorrow's detailed weather -->
-                        </div>
+                        <div id="tomorrowWeather"></div>
                     </div>
                 </section>
             </section>
         </div>
+
         <section class="forecast-table">
             <h2>10 Day Weather Forecast</h2>
             <table id="forecastTable">
@@ -57,9 +54,7 @@
                         <th>Sunset</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- 10-day forecast data will be injected here -->
-                </tbody>
+                <tbody></tbody>
             </table>
         </section>
 

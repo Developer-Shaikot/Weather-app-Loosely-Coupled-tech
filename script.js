@@ -7,6 +7,8 @@ const infoPanel = document.getElementById("infoPanel");
 const todayWeather = document.getElementById("todayWeather");
 const tomorrowWeather = document.getElementById("tomorrowWeather");
 const forecastTableBody = document.querySelector("#forecastTable tbody");
+const spinner = document.getElementById("spinner");
+const content = document.getElementById("content");
 
 window.onload = () => {
     getWeatherData(defaultCity);
@@ -23,6 +25,8 @@ fetchWeatherButton.addEventListener("click", () => {
 
 async function getWeatherData(location) {
     try {
+        showSpinner();
+
         const response = await fetch(
             `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=10`
         );
@@ -35,6 +39,8 @@ async function getWeatherData(location) {
         displayWeather(data);
     } catch (error) {
         weatherDetails.innerHTML = `<p>Error: ${error.message}</p>`;
+    } finally {
+        hideSpinner();
     }
 }
 
@@ -83,23 +89,6 @@ function displayWeather(data) {
         .join("");
 }
 
-document.querySelectorAll("th.sortable").forEach((header) => {
-    header.addEventListener("click", () => {
-        const table = header.parentElement.parentElement.parentElement;
-        const index = Array.from(header.parentElement.children).indexOf(header);
-        const rows = Array.from(table.querySelectorAll("tbody tr"));
-
-        const sortedRows = rows.sort((a, b) => {
-            const aText = a.querySelector(`td:nth-child(${index + 1})`).innerText;
-            const bText = b.querySelector(`td:nth-child(${index + 1})`).innerText;
-            return aText.localeCompare(bText);
-        });
-
-        rows.forEach((row) => row.parentElement.removeChild(row));
-        sortedRows.forEach((row) => table.querySelector("tbody").appendChild(row));
-    });
-});
-
 function generateWeatherCard(day, title) {
     return `
         <h3>${title}'s Weather</h3>
@@ -111,4 +100,14 @@ function generateWeatherCard(day, title) {
         <p>Precipitation: ${day.day.totalprecip_mm} mm</p>
         <p>Humidity: ${day.day.avghumidity}%</p>
     `;
+}
+
+function showSpinner() {
+    spinner.style.display = "flex";
+    content.style.display = "none";
+}
+
+function hideSpinner() {
+    spinner.style.display = "none";
+    content.style.display = "grid";
 }
