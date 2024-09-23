@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Forecast</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <h1>Search Daily Weather</h1>
+            <input type="text" id="locationInput" placeholder="Enter city" />
+            <button id="fetchWeather">Get Weather</button>
+        </header>
+
+        <div class="content">
+            <section class="weather-outlook">
+                <div id="weatherDetails">
+                    <!-- Weather forecast for today + next few days -->
+                </div>
+            </section>
+
+            <section class="information-panel">
+                <h2>Information</h2>
+                <div id="infoPanel">
+                    <!-- Country, region, coordinates, time info -->
+                </div>
+            </section>
+
+            <section class="tm-weather">
+                <section class="today-tomorrow">
+                    <div class="today-weather">
+                        <div id="todayWeather">
+                            <!-- Today's detailed weather -->
+                        </div>
+                    </div>
+                    <div class="tomorrow-weather">
+                        <div id="tomorrowWeather">
+                            <!-- Tomorrow's detailed weather -->
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+        <section class="forecast-table">
+            <h2>10 Day Weather Forecast</h2>
+            <table id="forecastTable">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Max Temp</th>
+                        <th>Min Temp</th>
+                        <th>Wind</th>
+                        <th>Precipitation</th>
+                        <th>Humidity</th>
+                        <th>Sunrise</th>
+                        <th>Sunset</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 10-day forecast data will be injected here -->
+                </tbody>
+            </table>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+</html>
